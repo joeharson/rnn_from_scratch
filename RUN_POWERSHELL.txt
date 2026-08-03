@@ -1,0 +1,58 @@
+PowerShell run steps for this project
+
+Important:
+The `.venv` folder is machine-specific. If you copy this project to another system, recreate the virtual environment instead of reusing the old one.
+
+Recreate it with:
+   python -m venv .venv
+   & .\.venv\Scripts\Activate.ps1
+   python -m pip install -r requirements.txt
+
+Docker setup:
+
+Run it anywhere
+Build the image: docker build -t rnn-from-scratch .
+
+Train the model:  docker run --rm -it rnn-from-scratch
+
+Generate text from a checkpoint:  docker run --rm -it rnn-from-scratch predict.py --checkpoint model.npz --prompt "hello" --length 100
+
+
+Recommended order:
+Train first, then predict.
+
+1. Open PowerShell in this folder:
+   D:\JOE\PRACTICES\rnn_from_scratch
+
+2. Activate the virtual environment:
+   Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned
+   & .\.venv\Scripts\Activate.ps1
+
+3. Install dependencies if needed:
+   python -m pip install numpy
+
+4. Train the model to create the checkpoint:
+   python train.py
+
+5. Run prediction from the saved checkpoint:
+   python predict.py
+
+6. Run prediction with a prompt:
+   python predict.py --prompt "Hello" --length 200
+
+7. Run prediction with a specific checkpoint:
+   python predict.py --checkpoint model.npz --prompt "Once upon a time" --length 300
+
+What is model.npz?
+model.npz is a NumPy checkpoint file created by train.py.
+It stores the trained model weights and is loaded by predict.py.
+
+What should you run first?
+Run train.py first if model.npz does not exist yet.
+After that, run predict.py to generate text from the trained model.
+
+Note:
+predict.py can still run without a checkpoint, but the output will be random because the model is not trained yet.
+
+
+
