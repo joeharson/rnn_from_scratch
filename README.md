@@ -5,9 +5,9 @@
 > No PyTorch. No TensorFlow. No autograd. No hidden abstractions.
 >
 > Every forward pass, every gradient, every weight update is implemented manually to understand **how recurrent neural networks actually learn**.
- 
----
 
+---
+ 
 ## Why This Project Exists
 
 Most deep learning tutorials begin with something like:
